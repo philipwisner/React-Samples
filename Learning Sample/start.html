@@ -10,15 +10,15 @@
   <div id='app'></div>
 
   <script type='text/babel'>
-    function App () {
+    function App (props) {
       return (
         <div>
-          Hello World
+          Hello {props.name}
         </div>
       )
     }
     ReactDOM.render(
-      <App />,
+      <App name="Phil"/>,
       document.getElementById('app')
     )
   </script>
