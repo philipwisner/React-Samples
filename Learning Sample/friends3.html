@@ -14,41 +14,38 @@
         <ul>
           {props.list.map((name) => (
             <li key={name}>
-              <span>{name}</span>
-              <button onClick={() => props.onRemoveFriend(name)}>X</button>
+              {name}
             </li>
           ))}
         </ul>
       )
     }
+
+//Functional component (stateless) is used to recieve props (data) and then just render the UI
+
+//Whenever you need state you need to use a class (component to manage its own state) 
+
+//When state needs to be shared, bring the state to the highest shared parent, then pass it down as props to all children in order to be managed.
+
     class App extends React.Component {
       constructor(props) {
         super(props)
+        
         this.state = {
-          friends: ['Jordyn', 'Mikenzi', 'Jake']
+          friends: ['Luka', 'Mark', 'Yilin']
         }
-        this.handleRemoveFriend = this.handleRemoveFriend.bind(this)
+        
       }
-      handleAddFriend(name) {
-      }
-      handleRemoveFriend(name) {
-        this.setState((currentState) => {
-          return {
-            friends: currentState.friends.filter((friend) => friend !== name)
-          }
-        })
-      }
+      
       render() {
         return (
           <div>
-            <FriendsList
-              list={this.state.friends}
-              onRemoveFriend={this.handleRemoveFriend}
-            />
+            <FriendsList list={this.state.friends} />
           </div>
         )
       }
     }
+
     ReactDOM.render(
       <App />,
       document.getElementById('app')
