@@ -22,7 +22,7 @@
       )
     }
 
-//Need to pass the props.onRemoveFriend to button, but that method needs an argument, so pass the method as an arrow function, this is done so that the function is called when it clicked not when loaded
+//Need to pass the props.onRemoveFriend to button, but that method needs an argument, so pass the method as an arrow function, this is done so that the function is called when it clicked not when loaded. Passing the onClick a reference to a function so that react can decide when to call the function.
 
 
 //Functional component (stateless) is used to recieve props (data) and then just render the UI, just use react function
@@ -38,6 +38,8 @@
         this.state = {
           friends: ['Luka', 'Mark', 'Yilin']
         }
+        
+        this.handleRemoveFirend = this.handleRemoveFirend.bind(this)
       }
       
 //Create method for each interaction with the state
