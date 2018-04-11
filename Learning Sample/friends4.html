@@ -16,12 +16,13 @@
           {props.list.map((name) => (
             <li key={name}>
               <span>{name}</span>
-              <button onClick={() => props.onRemoveFriend(name)}>X</button>
+              <button onClick={() => props.onRemoveFriend(name)}>Remove</button>
             </li>
           ))}
         </ul>
       )
     }
+
     class App extends React.Component {
       constructor(props) {
         super(props)
@@ -33,6 +34,7 @@
         this.updateInput = this.updateInput.bind(this)
         this.handleAddFriend = this.handleAddFriend.bind(this)
       }
+      
       handleAddFriend() {
         this.setState((currentState) => {
           return {
@@ -41,6 +43,7 @@
           }
         })
       }
+      
       handleRemoveFriend(name) {
         this.setState((currentState) => {
           return {
@@ -48,12 +51,17 @@
           }
         })
       }
-      updateInput(e) {
-        const value = e.target.value
+      
+      updateInput(event) {
+        const value = event.target.value
         this.setState({
           input: value
         })
       }
+      
+//Create a text input and button in the render so that you can add friends
+//Need to have an onChange prop for input or else the input will be fixed to original value.
+      
       render() {
         return (
           <div>
@@ -74,10 +82,13 @@
         )
       }
     }
+
+
     ReactDOM.render(
       <App />,
       document.getElementById('app')
     )
+    
   </script>
 </body>
 </html>
