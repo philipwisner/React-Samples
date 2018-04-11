@@ -21,9 +21,9 @@
       )
     }
 
-//Functional component (stateless) is used to recieve props (data) and then just render the UI
+//Functional component (stateless) is used to recieve props (data) and then just render the UI, just use react function
 
-//Whenever you need state you need to use a class (component to manage its own state) 
+//Whenever you need state you need to use a CLASS (component to manage its own state) 
 
 //When state needs to be shared, bring the state to the highest shared parent, then pass it down as props to all children in order to be managed.
 
@@ -34,7 +34,23 @@
         this.state = {
           friends: ['Luka', 'Mark', 'Yilin']
         }
+      }
+      
+//Create method for each interaction with the state
+//Use setState in component to change manage state in a component          
+      
+      handleAddFriend() {
         
+        
+      }
+      
+//Update state using function that returns an object to merge with current state
+      handleRemoveFirend(name) {
+        this.setState((currentState) => {
+          return {
+            friends: currentState.friends.filter((friend) => friend !== name)
+          }
+        })
       }
       
       render() {
