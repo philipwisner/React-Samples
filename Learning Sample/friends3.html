@@ -39,8 +39,11 @@
           friends: ['Luka', 'Mark', 'Yilin']
         }
         
-        this.handleRemoveFirend = this.handleRemoveFirend.bind(this)
+        this.handleRemoveFriend = this.handleRemoveFriend.bind(this)
       }
+      
+//Using bind allows you to specify what the this keyword refers to. We want this to refer to the App component, so we bind it to this inside the app component(constructor)
+      
       
 //Create method for each interaction with the state
 //Use setState in component to change manage state in a component          
@@ -52,7 +55,7 @@
       
 //Update state using function that returns an object to merge with current state (need to use state so you do not mutate data). Also by changing state it will rerender the UI
           
-        handleRemoveFirend(name) {
+        handleRemoveFriend(name) {
           this.setState((currentState) => {
             return {
               friends: currentState.friends.filter((friend) => friend !== name)
@@ -67,7 +70,7 @@
             <div>
               <FriendsList 
                 list={this.state.friends}
-                onRemoveFriend={this.handleRemoveFirend} 
+                onRemoveFriend={this.handleRemoveFriend} 
                 />
             </div>
           )
