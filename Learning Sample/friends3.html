@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
   <title>First React App</title>
@@ -15,7 +14,8 @@
         <ul>
           {props.list.map((name) => (
             <li key={name}>
-              {name}
+              <span>{name}</span>
+              <button onClick={() => props.onRemoveFriend(name)}>X</button>
             </li>
           ))}
         </ul>
@@ -25,13 +25,26 @@
       constructor(props) {
         super(props)
         this.state = {
-          friends: ['Luka', 'Mark', 'Yilin']
+          friends: ['Jordyn', 'Mikenzi', 'Jake']
         }
+        this.handleRemoveFriend = this.handleRemoveFriend.bind(this)
+      }
+      handleAddFriend(name) {
+      }
+      handleRemoveFriend(name) {
+        this.setState((currentState) => {
+          return {
+            friends: currentState.friends.filter((friend) => friend !== name)
+          }
+        })
       }
       render() {
         return (
           <div>
-            <FriendsList list={this.state.friends} />
+            <FriendsList
+              list={this.state.friends}
+              onRemoveFriend={this.handleRemoveFriend}
+            />
           </div>
         )
       }
