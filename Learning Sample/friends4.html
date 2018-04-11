@@ -15,7 +15,7 @@
         <ul>
           {props.list.map((name) => (
             <li key={name}>
-              <span>{name}</span>
+              <span>{name} </span>
               <button onClick={() => props.onRemoveFriend(name)}>Remove</button>
             </li>
           ))}
@@ -34,6 +34,8 @@
         this.updateInput = this.updateInput.bind(this)
         this.handleAddFriend = this.handleAddFriend.bind(this)
       }
+
+  //Need to update the state in order to add the friend. We want to keep friends the same, but add the new name, using concat. This will add the input value to the state. Do not use push because it will modify the original array, concat makes new array
       
       handleAddFriend() {
         this.setState((currentState) => {
@@ -43,7 +45,9 @@
           }
         })
       }
+ 
       
+//This is explained in v3
       handleRemoveFriend(name) {
         this.setState((currentState) => {
           return {
