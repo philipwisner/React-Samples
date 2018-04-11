@@ -27,12 +27,12 @@
       constructor(props) {
         super(props)
         this.state = {
-          friends: ['Jordyn', 'Mikenzi', 'Jake'],
+          friends: ['Luka', 'Mark', 'Yilin'],
           input: '',
         }
-        this.handleRemoveFriend = this.handleRemoveFriend.bind(this)
-        this.updateInput = this.updateInput.bind(this)
-        this.handleAddFriend = this.handleAddFriend.bind(this)
+        this.handleRemoveFriend = this.handleRemoveFriend.bind(this);
+        this.updateInput = this.updateInput.bind(this);
+        this.handleAddFriend = this.handleAddFriend.bind(this);
       }
 
   //Need to update the state in order to add the friend. We want to keep friends the same, but add the new name, using concat. This will add the input value to the state. Do not use push because it will modify the original array, concat makes new array
@@ -41,11 +41,12 @@
         this.setState((currentState) => {
           return {
             friends: currentState.friends.concat([this.state.input]),
-            input: ''
+            input: '',
           }
         })
       }
- 
+ //Change the input to an empty string so that once friend is added, the field returns to blank.
+      
       
 //This is explained in v3
       handleRemoveFriend(name) {
