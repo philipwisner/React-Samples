@@ -14,12 +14,16 @@
         <ul>
           {props.list.map((name) => (
             <li key={name}>
-              {name}
+              <span>{name}</span>
+              <button onClick={() => props.onRemoveFriend(name)}>Remove</button>
             </li>
           ))}
         </ul>
       )
     }
+
+//Need to pass the props.onRemoveFriend to button, but that method needs an argument, so pass the method as an arrow function, this is done so that the function is called when it clicked not when loaded
+
 
 //Functional component (stateless) is used to recieve props (data) and then just render the UI, just use react function
 
@@ -39,27 +43,36 @@
 //Create method for each interaction with the state
 //Use setState in component to change manage state in a component          
       
-      handleAddFriend() {
-        
-        
-      }
+        handleAddFriend() {
+
+
+        }
       
-//Update state using function that returns an object to merge with current state
-      handleRemoveFirend(name) {
-        this.setState((currentState) => {
-          return {
-            friends: currentState.friends.filter((friend) => friend !== name)
-          }
-        })
-      }
+//Update state using function that returns an object to merge with current state (need to use state so you do not mutate data). Also by changing state it will rerender the UI
+          
+        handleRemoveFirend(name) {
+          this.setState((currentState) => {
+            return {
+              friends: currentState.friends.filter((friend) => friend !== name)
+            }
+          })
+        }
       
-      render() {
-        return (
-          <div>
-            <FriendsList list={this.state.friends} />
-          </div>
-        )
-      }
+//This function changes the current state by filtering out the name of whatever name we passed it (better to use the key id), then updates the state with the new object without the name passed into it
+           
+        render() {
+          return (
+            <div>
+              <FriendsList 
+                list={this.state.friends}
+                onRemoveFriend={this.handleRemoveFirend} 
+                />
+            </div>
+          )
+        }
+      
+//Pass the methods down as a prop into the Friend's list component
+      
     }
 
     ReactDOM.render(
