@@ -40,7 +40,7 @@
       handleAddFriend() {
         this.setState((currentState) => {
           return {
-            friends: currentState.friends.concat([this.state.input]),
+            friends: currentState.friends.concat([currentState.input]),
             input: '',
           }
         })

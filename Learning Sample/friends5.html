@@ -17,7 +17,7 @@
           <ul>
             {props.list.map((friend) => (
               <li key={friend.name}>
-                <span>{friend.name}</span>
+                <span>{friend.name} </span>
                 <button onClick={() => props.onRemoveFriend(friend.name)}>Remove</button>
                 <button onClick={() => props.onToggleFriend(friend.name)}>Deactivate</button>
               </li>
@@ -26,6 +26,7 @@
         </div>
       )
     }
+
     function InactiveFriends (props) {
       return (
         <div>
@@ -33,7 +34,7 @@
           <ul>
             {props.list.map((friend) => (
               <li key={friend.name}>
-                <span>{friend.name}</span>
+                <span>{friend.name} </span>
                 <button onClick={() => props.onToggleFriend(friend.name)}>Activate</button>
               </li>
             ))}
@@ -41,21 +42,26 @@
         </div>
       )
     }
+
     class App extends React.Component {
       constructor(props) {
         super(props)
         this.state = {
           friends: [
             {
-              name: 'Jordyn',
+              name: 'Mark',
               active: true,
             },
             {
-              name: 'Mikenzi',
+              name: 'Luka',
               active: true,
             },
             {
-              name: 'Jake',
+              name: 'Yilin',
+              active: false
+            }, 
+            {
+              name: 'Craig',
               active: false
             }
           ],
