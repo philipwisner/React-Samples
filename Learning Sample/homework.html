@@ -14,14 +14,14 @@
       return (
 				<div>
 					<h2>Active Friends</h2>
-						<ul>
-							{props.list.map((friend) => (
-								<li key={friend.name}>
-									<span>{friend.name} </span>
-									<button onClick={() => props.onRemoveFriend(name)}>Remove</button>
-								</li>
+					<ul>
+						{props.list.map((friend) => (
+							<li key={friend.name}>
+								<span>{friend.name} </span>
+								<button onClick={() => props.onRemoveFriend(friend.name)}>Remove</button>
+							</li>
 							))}
-						</ul>
+					</ul>
 				</div>
       )
     }
@@ -30,19 +30,19 @@
       return (
         <div>
 					<h2>Inactive Friends</h2>
-						<ul>
-							{props.list.map((friend) => (
-								<li key={friend.name}>
-									<span>{friend.name} </span>
-									<button onClick={() => props.onRemoveFriend(name)}>Remove</button>
-								</li>
-							))}
-						</ul>
+					<ul>
+						{props.list.map((friend) => (
+							<li key={friend.name}>
+								<span>{friend.name} </span>
+								<button onClick={() => props.onRemoveFriend(friend.name)}>Remove</button>
+							</li>
+						))}
+					</ul>
 				</div>
       )
     }
 
-//ACTIVE AND INACTIVE FRIEND LISTS
+//FILTER ACTIVE/INACTIVE IN LISTS
 //BUTTONS TO TOGGLE ACTIVE/INACTIVE
 
     class App extends React.Component {
@@ -52,23 +52,23 @@
           friends: [
             {
               name:'Luka',
-              status: true,
+              active: true,
             },
             {
               name:'Mark',
-              status: true,
+              active: true,
             },
             {
               name:'Yilin',
-              status: false,
+              active: false,
             },
             {
               name:'Craig',
-              status: false,
+              active: false,
             },
             {
               name:'Kelsey',
-              status: false,
+              active: false,
             }
           ],  
           input: '',
@@ -83,7 +83,10 @@
       handleAddFriend() {
         this.setState((currentState) => {
           return {
-            friends: currentState.friends.concat([currentState.input]),
+            friends: currentState.friends.concat([{
+							name: this.state.input,
+							active: true,
+						}]),
             input: '',
           }
         })
@@ -133,7 +136,7 @@
             <br/>
             <button onClick={this.handleClearAll}>Clear All</button>
             <ActiveFriendsList
-              list={this.state.friends}
+              list={this.state.friends.filter((friend) => friend.active === true)}
               onRemoveFriend={this.handleRemoveFriend}
             />
             <InactiveFriendsList
