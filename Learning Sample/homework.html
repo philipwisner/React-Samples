@@ -19,6 +19,7 @@
 							<li key={friend.name}>
 								<span>{friend.name} </span>
 								<button onClick={() => props.onRemoveFriend(friend.name)}>Remove</button>
+								<span> </span>
 								<button onClick={() => props.onToggleFriend(friend.name)}>Inactive</button>
 							</li>
 							))}
@@ -35,7 +36,6 @@
 						{props.list.map((friend) => (
 							<li key={friend.name}>
 								<span>{friend.name} </span>
-								<button onClick={() => props.onRemoveFriend(friend.name)}>Remove</button>
 								<button onClick={() => props.onToggleFriend(friend.name)}>Active</button>
 							</li>
 						))}
@@ -43,8 +43,6 @@
 				</div>
       )
     }
-
-//BUTTONS TO TOGGLE ACTIVE/INACTIVE
 
     class App extends React.Component {
       constructor(props) {
@@ -114,6 +112,23 @@
           }
         })
       }
+				
+
+//Function to toggle status of friend - inactive/active
+      handleToggleFriend(name) {
+        this.setState((currentState) => {
+          const friend = currentState.friend.find((friend) => friend.name === name)
+					return {
+            friends: currentState.friends.filter((friend) => friend.name !== name)
+							.concat([{
+								name,
+								active: !friend.active
+							}])
+          }
+        })
+      }
+				
+			
       
       updateInput(event) {
         const value = event.target.value
