@@ -15,9 +15,9 @@
 				<div>
 					<h2>Active Friends</h2>
 						<ul>
-							{props.list.map((name) => (
-								<li key={name}>
-									<span>{name} </span>
+							{props.list.map((friend) => (
+								<li key={friend.name}>
+									<span>{friend.name} </span>
 									<button onClick={() => props.onRemoveFriend(name)}>Remove</button>
 								</li>
 							))}
@@ -44,8 +44,6 @@
 
 //ACTIVE AND INACTIVE FRIEND LISTS
 //BUTTONS TO TOGGLE ACTIVE/INACTIVE
-//DO NOT ALLOW EMPTY INPUT
-
 
     class App extends React.Component {
       constructor(props) {
@@ -129,12 +127,12 @@
               value={this.state.input}
               onChange={this.updateInput}
             />
-            <button onClick={this.handleAddFriend}>
+            <button onClick={this.handleAddFriend} disabled={!this.state.input}>
               Submit
             </button>
             <br/>
             <button onClick={this.handleClearAll}>Clear All</button>
-            <FriendsList
+            <ActiveFriendsList
               list={this.state.friends}
               onRemoveFriend={this.handleRemoveFriend}
             />
