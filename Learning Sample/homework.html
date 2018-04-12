@@ -10,16 +10,35 @@
   <div id='app'></div>
 
   <script type='text/babel'>
-    function FriendsList (props) {
+    function ActiveFriendsList (props) {
       return (
-        <ul>
-          {props.list.map((name) => (
-            <li key={name}>
-              <span>{name} </span>
-              <button onClick={() => props.onRemoveFriend(name)}>Remove</button>
-            </li>
-          ))}
-        </ul>
+				<div>
+					<h2>Active Friends</h2>
+						<ul>
+							{props.list.map((name) => (
+								<li key={name}>
+									<span>{name} </span>
+									<button onClick={() => props.onRemoveFriend(name)}>Remove</button>
+								</li>
+							))}
+						</ul>
+				</div>
+      )
+    }
+
+    function InactiveFriendsList (props) {
+      return (
+        <div>
+					<h2>Inactive Friends</h2>
+						<ul>
+							{props.list.map((name) => (
+								<li key={name}>
+									<span>{name} </span>
+									<button onClick={() => props.onRemoveFriend(name)}>Remove</button>
+								</li>
+							))}
+						</ul>
+				</div>
       )
     }
 
@@ -113,7 +132,7 @@
             <button onClick={this.handleAddFriend}>
               Submit
             </button>
-            <br />
+            <br/>
             <button onClick={this.handleClearAll}>Clear All</button>
             <FriendsList
               list={this.state.friends}
