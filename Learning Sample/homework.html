@@ -40,6 +40,7 @@
         this.handleRemoveFriend = this.handleRemoveFriend.bind(this);
         this.updateInput = this.updateInput.bind(this);
         this.handleAddFriend = this.handleAddFriend.bind(this);
+        this.handleClearAll = this.handleClearAll.bind(this);
       }
 
       
@@ -51,8 +52,18 @@
           }
         })
       }
- //Change the input to an empty string so that once friend is added, the field returns to blank.
-      
+//Change the input to an empty string so that once friend is added, the field returns to blank.
+          
+        
+//BUTTON TO CLEAR ALL FRIENDS
+      handleClearAll() {
+        this.setState((currentState) => {
+          return {
+            friends: currentState.friends = [],
+          }
+        })
+      }
+
       
 //This is explained in v3
       handleRemoveFriend(name) {
