@@ -19,6 +19,7 @@
 							<li key={friend.name}>
 								<span>{friend.name} </span>
 								<button onClick={() => props.onRemoveFriend(friend.name)}>Remove</button>
+								<button onClick={() => props.onToggleFriend(friend.name)}>Inactive</button>
 							</li>
 							))}
 					</ul>
@@ -35,6 +36,7 @@
 							<li key={friend.name}>
 								<span>{friend.name} </span>
 								<button onClick={() => props.onRemoveFriend(friend.name)}>Remove</button>
+								<button onClick={() => props.onToggleFriend(friend.name)}>Active</button>
 							</li>
 						))}
 					</ul>
@@ -42,7 +44,6 @@
       )
     }
 
-//FILTER ACTIVE/INACTIVE IN LISTS
 //BUTTONS TO TOGGLE ACTIVE/INACTIVE
 
     class App extends React.Component {
@@ -77,6 +78,7 @@
         this.updateInput = this.updateInput.bind(this);
         this.handleAddFriend = this.handleAddFriend.bind(this);
         this.handleClearAll = this.handleClearAll.bind(this);
+				this.handleToggleFriend = this.handleToggleFriend(this);
       }
 
       
@@ -138,10 +140,12 @@
             <ActiveFriendsList
               list={this.state.friends.filter((friend) => friend.active === true)}
               onRemoveFriend={this.handleRemoveFriend}
+              onToggleFriend={this.handleToggleFriend}
             />
             <InactiveFriendsList
               list={this.state.friends.filter((friend)=> friend.active === false)}
               onRemoveFriend={this.handleRemoveFriend}
+              onToggleFriend={this.handleToggleFriend}
             />
           </div>
         )
