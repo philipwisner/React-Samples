@@ -76,7 +76,7 @@
         this.updateInput = this.updateInput.bind(this);
         this.handleAddFriend = this.handleAddFriend.bind(this);
         this.handleClearAll = this.handleClearAll.bind(this);
-				this.handleToggleFriend = this.handleToggleFriend(this);
+				this.handleToggleFriend = this.handleToggleFriend.bind(this);
       }
 
       
@@ -117,7 +117,7 @@
 //Function to toggle status of friend - inactive/active
       handleToggleFriend(name) {
         this.setState((currentState) => {
-          const friend = currentState.friend.find((friend) => friend.name === name)
+          const friend = currentState.friends.find((friend) => friend.name === name)
 					return {
             friends: currentState.friends.filter((friend) => friend.name !== name)
 							.concat([{
