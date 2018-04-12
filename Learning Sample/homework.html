@@ -23,18 +23,37 @@
       )
     }
 
-//NEED TO ADD A CLEAR ALL BUTTON
 //ACTIVE AND INACTIVE FRIEND LISTS
 //BUTTONS TO TOGGLE ACTIVE/INACTIVE
 //DO NOT ALLOW EMPTY INPUT
-
 
 
     class App extends React.Component {
       constructor(props) {
         super(props)
         this.state = {
-          friends: ['Luka', 'Mark', 'Yilin'],
+          friends: [
+            {
+              name:'Luka',
+              status: true,
+            },
+            {
+              name:'Mark',
+              status: true,
+            },
+            {
+              name:'Yilin',
+              status: false,
+            },
+            {
+              name:'Craig',
+              status: false,
+            },
+            {
+              name:'Kelsey',
+              status: false,
+            }
+          ],  
           input: '',
         }
         this.handleRemoveFriend = this.handleRemoveFriend.bind(this);
