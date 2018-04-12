@@ -31,9 +31,9 @@
         <div>
 					<h2>Inactive Friends</h2>
 						<ul>
-							{props.list.map((name) => (
-								<li key={name}>
-									<span>{name} </span>
+							{props.list.map((friend) => (
+								<li key={friend.name}>
+									<span>{friend.name} </span>
 									<button onClick={() => props.onRemoveFriend(name)}>Remove</button>
 								</li>
 							))}
@@ -133,6 +133,10 @@
             <br/>
             <button onClick={this.handleClearAll}>Clear All</button>
             <ActiveFriendsList
+              list={this.state.friends}
+              onRemoveFriend={this.handleRemoveFriend}
+            />
+            <InactiveFriendsList
               list={this.state.friends}
               onRemoveFriend={this.handleRemoveFriend}
             />
