@@ -140,7 +140,7 @@
               onRemoveFriend={this.handleRemoveFriend}
             />
             <InactiveFriendsList
-              list={this.state.friends}
+              list={this.state.friends.filter((friend)=> friend.active === false)}
               onRemoveFriend={this.handleRemoveFriend}
             />
           </div>
