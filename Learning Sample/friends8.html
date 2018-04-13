@@ -29,10 +29,20 @@
           setTimeout(() => res(friends), 2000)
         })
       }
-    }
+    }		
+		//Simulated external API to fetch our data from instead of hosting locally
   </script>
 
+
+<!--
+Beacause it takes 2 seconds to get data from API, we set the Loading property to false once the call is completed so that the data we can show the data and remove the loading screen.
+  
+We tell render to display the loading component if the state of loading is true, which it is until the AJAX call is complete and we tell it to change the state to false.
+-->
+
   <script type='text/babel'>
+
+//LOADING COMPONENT
     class Loading extends React.Component {
       constructor(props) {
         super(props);
@@ -104,21 +114,30 @@
         this.handleToggleFriend = this.handleToggleFriend.bind(this)
         console.log('--constructor--')
       }
+			
       componentDidMount() {
         console.log('--componentDidMount--')
-        API.fetchFriends()
+       
+				
+//		Making the AJAX request here to get our data from friends list. We call our API to get our data, but we also set the state to get the friends list but also change the state of loading
+				
+				API.fetchFriends()
           .then((friends) => {
             this.setState({
               friends,
               loading: false,
             })
         })
-      }
+      } 
+			
+			
       componentDidUpdate() {
         console.log('--componentDidUpdate--')
       }
+			
       componentWillUnmount() {
-        console.log('--componentWillUnmount--')
+        console
+					.log('--componentWillUnmount--')
       }
       handleAddFriend() {
         this.setState((currentState) => {
@@ -161,6 +180,7 @@
         if (this.state.loading === true) {
           return <Loading />
         }
+				
         return (
           <div>
             <input
