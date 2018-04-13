@@ -127,7 +127,6 @@
           }
         })
       }
-				
 			
       
       updateInput(event) {
@@ -153,13 +152,12 @@
             <br/>
             <button onClick={this.handleClearAll}>Clear All</button>
             <ActiveFriendsList
-              list={this.state.friends.filter((friend) => friend.active === true)}
+              list={this.state.friends.filter((friend) => friend.active)}
               onRemoveFriend={this.handleRemoveFriend}
               onToggleFriend={this.handleToggleFriend}
             />
             <InactiveFriendsList
-              list={this.state.friends.filter((friend)=> friend.active === false)}
-              onRemoveFriend={this.handleRemoveFriend}
+              list={this.state.friends.filter((friend)=> !friend.active)}
               onToggleFriend={this.handleToggleFriend}
             />
           </div>
