@@ -12,9 +12,11 @@
 <!--
 Component Lifecycle Order
 1. Constructor (function to create elements of a component)
-2. Render (describes the UI - what to display)
-3. Component did mount (useful for AJAX requests)
-4. Component did update (whenever component recieves new props or state)
+2. Render() (describes the UI - what to display)
+3. ComponentDidMount() (useful for AJAX requests)
+4. ComponentDidUpdate() (whenever component recieves new props or state)
+5. ComponentWillUnmount() (router/listeners)
+(Component rerenders everytime there is a change)
 -->
 
 
