@@ -9,6 +9,15 @@
 <body>
   <div id='app'></div>
 
+<!--
+Component Lifecycle Order
+1. Constructor (function to create elements of a component)
+2. Render (describes the UI - what to display)
+3. Component did mount (useful for AJAX requests)
+4. Component did update (whenever component recieves new props or state)
+-->
+
+
   <script type='text/babel'>
     function ActiveFriends (props) {
       return (
@@ -72,6 +81,8 @@
       componentDidMount() {
         console.log('--componentDidMount--')
       }
+			//Whenever the component is mounted to the DOM, after it is rendered via function
+			
       componentDidUpdate() {
         console.log('--componentDidUpdate--')
       }
