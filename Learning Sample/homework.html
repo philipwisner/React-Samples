@@ -44,6 +44,22 @@
       )
     }
 
+    function DeletedFriendsList (props) {
+      return (
+        <div>
+					<h2>Deleted Friends</h2>
+					<ul>
+						{props.list.map((friend) => (
+							<li key={friend.name}>
+								<span>{friend.name} </span>
+								<button onClick={() => props.onToggleFriend(friend.name)}>Add</button>
+							</li>
+						))}
+					</ul>
+				</div>
+      )
+    }
+
     class App extends React.Component {
       constructor(props) {
         super(props)
@@ -52,22 +68,28 @@
             {
               name:'Luka',
               active: true,
+							deteled: false,
             },
             {
               name:'Mark',
               active: true,
+							deteled: false,
             },
             {
               name:'Yilin',
               active: false,
+							deteled: false,
+
             },
             {
               name:'Craig',
               active: false,
+							deteled: false,
             },
             {
               name:'Kelsey',
               active: false,
+							deteled: false,
             }
           ],  
           input: '',
@@ -109,6 +131,11 @@
         this.setState((currentState) => {
           return {
             friends: currentState.friends.filter((friends) => friends.name !== name)
+							.concat([{
+									name,
+									active: false,
+									deleted: true,
+							}])
           }
         })
       }
@@ -152,13 +179,16 @@
             <br/>
             <button onClick={this.handleClearAll}>Clear All</button>
             <ActiveFriendsList
-              list={this.state.friends.filter((friend) => friend.active)}
+              list={this.state.friends.filter((friend) => friend.active && !friend.deteled)}
               onRemoveFriend={this.handleRemoveFriend}
               onToggleFriend={this.handleToggleFriend}
             />
             <InactiveFriendsList
-              list={this.state.friends.filter((friend)=> !friend.active)}
+              list={this.state.friends.filter((friend)=> !friend.active && !friend.deteled)}
               onToggleFriend={this.handleToggleFriend}
+            />
+             <DeletedFriendsList
+              list={this.state.friends.filter((friend)=> friend.deleted)}
             />
           </div>
         )
