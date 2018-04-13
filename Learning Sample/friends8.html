@@ -24,7 +24,7 @@
             {
               name: 'Jake',
               active: false
-            }
+            } 
           ]
           setTimeout(() => res(friends), 2000)
         })
@@ -42,6 +42,7 @@ We tell render to display the loading component if the state of loading is true,
 
   <script type='text/babel'>
 
+
 //LOADING COMPONENT
     class Loading extends React.Component {
       constructor(props) {
@@ -50,17 +51,7 @@ We tell render to display the loading component if the state of loading is true,
           text: 'Loading'
         };
       }
-      componentDidMount() {
-        const stopper = this.state.text + '...';
-        this.interval = window.setInterval(() => {
-          this.state.text === stopper
-            ? this.setState(() => ({ text: 'Loading' }))
-            : this.setState((prevState) => ({ text: prevState.text + '.' }))
-        }, 300)
-      }
-      componentWillUnmount() {
-        window.clearInterval(this.interval);
-      }
+
       render() {
         return (
           <p>
@@ -69,6 +60,9 @@ We tell render to display the loading component if the state of loading is true,
         )
       }
     }
+
+
+
     function ActiveFriends (props) {
       return (
         <div>
