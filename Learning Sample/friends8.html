@@ -51,7 +51,22 @@ We tell render to display the loading component if the state of loading is true,
           text: 'Loading'
         };
       }
-
+			componentDidMount() {
+        const stopper = this.state.text + '...';
+//variable to say stop adding dots once it equals Loading...
+        this.interval = window.setInterval(() => {
+          this.state.text === stopper
+// Ternary function to say if the state text (which starts as Loading) equals Loading... then you are done, but since they are not equal, set the state text to Loading and then add a period (every 300ms) to the previous state. This will go until 3 periods because once Loading... === Loading... this function no longer runs
+            ? this.setState(() => ({ text: 'Loading' }))
+            : this.setState((prevState) => ({ text: prevState.text + '.' }))
+        }, 300)
+      }
+			
+//Tell the loading to stop once this component unmounts - which happens when loading = false aka when the data is added. We tell the window interval we created to be cleared
+      componentWillUnmount() {
+        window.clearInterval(this.interval);
+      }
+			
       render() {
         return (
           <p>
@@ -60,7 +75,6 @@ We tell render to display the loading component if the state of loading is true,
         )
       }
     }
-
 
 
     function ActiveFriends (props) {
