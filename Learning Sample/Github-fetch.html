@@ -61,7 +61,18 @@
 
 //CREATE NAV COMPONENT
 		function Nav (props) {
-			
+			const languages = ['All', 'JavaScript', 'Python', 'Ruby'];
+			return (
+				<nav>
+					<ul>
+						{languages.map((language) => (
+							<li>
+								{language}
+							</li>
+						))}
+					</ul>
+				</nav>
+			)
 		}
 
 //CREATE LANGUAGE GRID COMPONENT
@@ -76,7 +87,6 @@
       render() {
         return (
           <div>
-<!--    RENDER ALL THE COMPONENTS HERE!!-->
             <Nav />
             <LanguageGrid />
           </div>
