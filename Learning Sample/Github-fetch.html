@@ -9,6 +9,8 @@
 <body>
   <div id='app'></div>
   <script>
+		
+//The API to get all the repos is already done, just reference it
     window.API = {
       fetchPopularRepos(language) {
         // "language" can be "javascript", "ruby", "python", or "all"
@@ -56,15 +58,20 @@
         )
       }
     }
+
     class App extends React.Component {
       render() {
         return (
           <div>
-            
+<!--    RENDER ALL THE COMPONENTS HERE!!-->
+            <Nav />
+            <LanguageGrid />
           </div>
         )
       }
     }
+
+
     ReactDOM.render(
       <App />,
       document.getElementById('app')
