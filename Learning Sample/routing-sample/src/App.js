@@ -24,7 +24,13 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-           <Route path ='/' component={Home} />
+          <ul>
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/about'>About</Link></li>
+            <li><Link to='/topics'>Topics</Link></li>
+          </ul>
+          
+           <Route exact path ='/' component={Home} />
            <Route path ='/about' component={About}/>
            <Route path ='/topics' component={Topics}/>
         </div>
@@ -32,5 +38,8 @@ class App extends Component {
     );
   }
 }
+
+// Add exact to path so that it only renders home component when at pure url
+
 
 export default App;
