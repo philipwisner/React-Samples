@@ -53,6 +53,8 @@ const Topics = ({ match }) => (
   </div>
 )
 
+//Using TopicID because we are rendering the same component for each route
+
 class App extends Component {
   render() {
     return (
