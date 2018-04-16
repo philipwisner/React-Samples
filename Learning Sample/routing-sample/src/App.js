@@ -8,43 +8,45 @@ import {
 
 
 const Home = () => (
-  <h2>Home</h2>
+  <div>
+    <h2>Home</h2>
+  </div>
 )
 
 const About = () => (
-  <h2>About</h2>
+  <div>
+    <h2>About</h2>
+  </div>
 )
 
-const Topic = () => {
+const Topic = ({ match }) => (
   <div>
-    <h3>TOPIC</h3>
+    <h3>{match.params.topicId}</h3>
   </div>
-}
+)
 
-const Topics = () => (
+const Topics = ({ match }) => (
   <div>
     <h2>Topics</h2>
     <ul>
       <li>
-        <Link to={`/topics/rendering-with-react`}>
+        <Link to={`${match.url}/rendering`}>
           Rendering with React
         </Link>
       </li>
       <li>
-        <Link to={`/topics/components`}>
+        <Link to={`${match.url}/components`}>
           Components
         </Link>
       </li>
       <li>
-        <Link to={`/topics/props-v-state`}>
+        <Link to={`${match.url}/props-v-state`}>
           Props V. State
         </Link>
       </li>
     </ul>
     
-    <Route path={`topics/rendering`} component={Topic} />
-    <Route path={`topics/component`} component={Topic} />
-    <Route path={`topics/props-v-state`} component={Topic} />
+    <Route path={`${match.url}/:topicId`} component={Topic} />
   </div>
 )
 
