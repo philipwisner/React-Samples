@@ -26,7 +26,7 @@ const Topics = () => (
     <h2>Topics</h2>
     <ul>
       <li>
-        <Link to={`/topics/rendering`}>
+        <Link to={`/topics/rendering-with-react`}>
           Rendering with React
         </Link>
       </li>
@@ -41,6 +41,10 @@ const Topics = () => (
         </Link>
       </li>
     </ul>
+    
+    <Route path={`topics/rendering`} component={Topic} />
+    <Route path={`topics/component`} component={Topic} />
+    <Route path={`topics/props-v-state`} component={Topic} />
   </div>
 )
 
