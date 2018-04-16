@@ -15,8 +15,33 @@ const About = () => (
   <h2>About</h2>
 )
 
+const Topic = () => {
+  <div>
+    <h3>TOPIC</h3>
+  </div>
+}
+
 const Topics = () => (
-  <h2>Topics</h2>
+  <div>
+    <h2>Topics</h2>
+    <ul>
+      <li>
+        <Link to={`/topics/rendering`}>
+          Rendering with React
+        </Link>
+      </li>
+      <li>
+        <Link to={`/topics/components`}>
+          Components
+        </Link>
+      </li>
+      <li>
+        <Link to={`/topics/props-v-state`}>
+          Props V. State
+        </Link>
+      </li>
+    </ul>
+  </div>
 )
 
 class App extends Component {
