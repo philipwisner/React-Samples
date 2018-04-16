@@ -47,6 +47,9 @@ const Topics = ({ match }) => (
     </ul>
     
     <Route path={`${match.url}/:topicId`} component={Topic} />
+    <Route exact path={match.url} render={() => (
+        <h3>Please Select a Topic</h3>
+      )}/>
   </div>
 )
 
