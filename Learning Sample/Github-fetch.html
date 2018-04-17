@@ -75,17 +75,21 @@
       }
 
 
-//CREATE LANGUAGE GRID COMPONENT
+//CREATE LANGUAGE GRID COMPONENT - display all repos that meet selected language
     function RepoGrid (props) {
       return (
         <div>
-          <h1>HI</h1>
+          <ul>
+            <li><a href={html_url}>{name}</a></li>
+            <li>@{owner.login}</li>
+            <li>{stargazers_count} stars</li>
+          </ul>
         </div>
       )
     }
-        
+     
 
-// APP Component
+// App Component
     class App extends React.Component {
      constructor(props) {
        super(props);
@@ -96,18 +100,15 @@
        }
        this.handleSelectLangauge = this.handleSelectLangauge.bind(this);
        this.fetchRepos = this.fetchRepos.bind(this);
-     }
-      
+    }
       componentDidMount() {
         this.fetchRepos(this.state.activeLanguage)
       }
-      
       componentDidUpdate(prevState, prevProps) {
         if (this.prevState.activeLanguage !== this.state.activeLanguage) {
           this.fetchRepos(this.state.activeLanguage)
         }
-      }
-      
+      }  
       fetchRepos(language) {
         this.setState({
           loading: true,
@@ -120,8 +121,7 @@
             })
           })
       }
-      
-      
+
       handleSelectLangauge(language) {
         this.setState({
           activeLanguage: language,
@@ -136,7 +136,7 @@
             ? <Loading /> 
             : <div>
                <h1> {this.state.activeLanguage} </h1>
-              <RepoGrid props={} />
+              <RepoGrid repos={this.state.repos} />
             </div>}
           </div>
         )
