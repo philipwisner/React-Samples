@@ -131,7 +131,11 @@
         return (
           <div>
             <Nav onSelectLanguage = {this.handleSelectLangauge}/>
-            <RepoGrid />
+            {this.state.loading === true
+            ? <Loading /> 
+            : <div>
+              <RepoGrid />
+            </div>}
           </div>
         )
       }
