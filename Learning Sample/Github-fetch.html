@@ -27,11 +27,9 @@
   </script>
   
   
-<!-- 
- For Homework turn this into a functioning app that changes the url to match the language selected and then load the repos 
- -->
-
   <script type='text/babel'>
+
+// LOADING COMPONENT
     class Loading extends React.Component {
       constructor(props) {
         super(props);
@@ -78,13 +76,13 @@
 
 
 //CREATE LANGUAGE GRID COMPONENT
-		function LanguageGrid (props) {
-		  return (
-            <div>
-              <h1>HI</h1>
-            </div>
-          )
-		}
+    function RepoGrid (props) {
+      return (
+        <div>
+          <h1>HI</h1>
+        </div>
+      )
+    }
         
 
 
@@ -109,24 +107,29 @@
       }
       
       handleSelectLangauge(language) {
-        this.setState(language)
+        this.setState({
+          activeLanguage: language,
+        })
       }
       
       render() {
         return (
           <div>
             <Nav />
-            <LanguageGrid />
+            <RepoGrid />
           </div>
         )
       }
     }
 
 
+
     ReactDOM.render(
       <App />,
       document.getElementById('app')
     )
+    
+    
   </script>
 </body>
 </html>
