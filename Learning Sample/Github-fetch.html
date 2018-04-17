@@ -59,34 +59,46 @@
       }
     }
 
+
 //CREATE NAV COMPONENT
-		function Nav (props) {
-			const languages = ['All', 'JavaScript', 'Python', 'Ruby'];
-			return (
-				<nav>
-					<ul>
-						{languages.map((language) => (
-							<li>
-								{language}
-							</li>
-						))}
-					</ul>
-				</nav>
-			)
-		}
+    function Nav (props) {
+      const languages = ['All', 'JavaScript', 'Python', 'Ruby'];
+		return (
+		  <nav>
+			<ul>
+			  {languages.map((language) => (
+		      <li key={language} onClick={() => props.onSelectLanguage(language)}>
+				{language}
+		      </li>
+		      ))}
+			</ul>
+		  </nav>
+		)
+      }
+
 
 //CREATE LANGUAGE GRID COMPONENT
 		function LanguageGrid (props) {
-			
+		  return (
+            <div>
+              <h1>HI</h1>
+            </div>
+          )
 		}
         
 
 
     class App extends React.Component {
-//	Need to fill up the constructor
-//	Also bind the methods, use lifecycle functions
-// 	Pass props to components
-      this.setState()
+     constructor(props) {
+       super(props);
+       this.state = {
+         repos: [],
+         activeLanguage: 'all',
+         loading: true,
+       }
+       this.handleSelectLangauge = this.handleSelectLangauge.bind(this);
+     }
+
       
       componentDidMount() {
         
