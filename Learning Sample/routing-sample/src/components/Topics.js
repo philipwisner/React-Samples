@@ -30,7 +30,7 @@ export default function Topics ({match}) {
         </li>
       </ul>
 
-      <Route path={`${match.url}/:topicId`} component={Topic} />
+      <Route path={`${match.path}/:topicId`} component={Topic} />
       <Route exact path={match.url} render={() => (
           <h3>Please Select a Topic</h3>
         )}/>
@@ -40,3 +40,5 @@ export default function Topics ({match}) {
 
 
 //Using TopicID because we are rendering the same component for each route
+
+//match is a prop that the Browser Router passes down, you can use it to access the url or the path. Using the url in the link because it contains the actual text, while path contains /:TopicId. Use the match.path when you are routing path
