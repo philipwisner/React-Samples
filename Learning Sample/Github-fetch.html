@@ -97,14 +97,15 @@
        this.handleSelectLangauge = this.handleSelectLangauge.bind(this);
        this.fetchRepos = this.fetchRepos.bind(this);
      }
-
       
       componentDidMount() {
-        
+        this.fetchRepos(this.state.activeLanguage)
       }
       
-      componentDidUpdate() {
-        
+      componentDidUpdate(prevState, prevProps) {
+        if (this.prevState.activeLanguage !== this.state.activeLanguage) {
+          this.fetchRepos(this.state.activeLanguage)
+        }
       }
       
       fetchRepos(language) {
