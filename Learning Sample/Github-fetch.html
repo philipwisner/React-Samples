@@ -134,7 +134,8 @@
             {this.state.loading === true
             ? <Loading /> 
             : <div>
-              <RepoGrid />
+               <h1> {this.state.activeLanguage} </h1>
+              <RepoGrid props={} />
             </div>}
           </div>
         )
