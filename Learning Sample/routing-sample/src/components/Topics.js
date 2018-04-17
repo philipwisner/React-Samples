@@ -31,7 +31,7 @@ export default function Topics ({match}) {
       </ul>
 
       <Route path={`${match.path}/:topicId`} component={Topic} />
-      <Route exact path={match.url} render={() => (
+      <Route exact path={match.path} render={() => (
           <h3>Please Select a Topic</h3>
         )}/>
     </div>
