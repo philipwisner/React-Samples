@@ -79,11 +79,12 @@
     function RepoGrid (props) {
       return (
         <ul style={{display: 'flex', flexWrap: 'wrap'}}>
-         {props.repos.map(({name, owner, stargazers_count, html_url}) => (
+         {props.repos.map(({name, owner, stargazers_count, html_url, description}) => (
           <li key={name} style={{margin: 30}}>
             <li><a href={html_url}>{name}</a></li>
             <li>@{owner.login}</li>
             <li>{stargazers_count} stars</li>
+            <li>{description}</li>
           </li>
          ))}
         </ul>
@@ -137,7 +138,7 @@
             {this.state.loading === true
             ? <Loading /> 
             : <div>
-               <h1> {this.state.activeLanguage} </h1>
+               <h1 style={{textAlign: 'center'}}> {this.state.activeLanguage} </h1>
               <RepoGrid repos={this.state.repos} />
             </div>}
           </div>
