@@ -85,7 +85,7 @@
     }
         
 
-
+// APP Component
     class App extends React.Component {
      constructor(props) {
        super(props);
@@ -95,6 +95,7 @@
          loading: true,
        }
        this.handleSelectLangauge = this.handleSelectLangauge.bind(this);
+       this.fetchRepos = this.fetchRepos.bind(this);
      }
 
       
@@ -106,6 +107,20 @@
         
       }
       
+      fetchRepos(language) {
+        this.setState({
+          loading: true,
+        })
+        window.API.fetchPopularRepos(language)
+          .then((data) => {
+            this.setState({
+              loading: false,
+              repos: data,
+            })
+          })
+      }
+      
+      
       handleSelectLangauge(language) {
         this.setState({
           activeLanguage: language,
@@ -115,7 +130,7 @@
       render() {
         return (
           <div>
-            <Nav />
+            <Nav onSelectLanguage = {this.handleSelectLangauge}/>
             <RepoGrid />
           </div>
         )
