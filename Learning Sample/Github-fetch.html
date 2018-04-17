@@ -78,13 +78,15 @@
 //CREATE LANGUAGE GRID COMPONENT - display all repos that meet selected language
     function RepoGrid (props) {
       return (
-        <div>
-          <ul>
+        <ul style={{display: 'flex', flexWrap: 'wrap'}}>
+         {props.repos.map(({name, owner, stargazers_count, html_url}) => (
+          <li key={name} style={{margin: 30}}>
             <li><a href={html_url}>{name}</a></li>
             <li>@{owner.login}</li>
             <li>{stargazers_count} stars</li>
-          </ul>
-        </div>
+          </li>
+         ))}
+        </ul>
       )
     }
      
@@ -104,8 +106,8 @@
       componentDidMount() {
         this.fetchRepos(this.state.activeLanguage)
       }
-      componentDidUpdate(prevState, prevProps) {
-        if (this.prevState.activeLanguage !== this.state.activeLanguage) {
+      componentDidUpdate(prevProps, prevState) {
+        if (prevState.activeLanguage !== this.state.activeLanguage) {
           this.fetchRepos(this.state.activeLanguage)
         }
       }  
